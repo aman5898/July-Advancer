@@ -25,11 +25,18 @@ public class Arrays {
         }
 
         System.out.println();
-        
+
         // Printing reverse
         for(int i=arr.length-1;i>=0;i--){
             System.out.print(arr[i]+" ");
         }
 
+        System.out.println();
+        // for each loop
+        for(int val:arr){
+            System.out.print(val+" ");
+        }
+
+        
     }
 }

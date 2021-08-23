@@ -36,7 +36,22 @@ public class Arrays {
         for(int val:arr){
             System.out.print(val+" ");
         }
-
+        System.out.println();
+        boolean bl = targetSum(arr, 3);
+        System.out.println(bl);
         
+    }
+
+    public static boolean targetSum(int[] arr, int target) {
+        for(int i=0;i<arr.length-1;i++){
+            for(int j=i+1;j<arr.length;j++){
+                int sum = arr[i]+arr[j];
+                System.out.println(arr[i]+ " "+arr[j]);
+                if(sum==target){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

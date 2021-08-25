@@ -40,31 +40,53 @@ public class Arrays {
         // boolean bl = targetSum(marks, 3);
         // System.out.println(bl);
 
-        int[] arr = {3,4,5,6,7,81,5};
-        Scanner scn = new Scanner(System.in);
-        int[] prefixSm = new int[arr.length];
-        for(int i=0;i<arr.length;i++){
-            if(i==0){
-                prefixSm[i]= arr[i];
-            }else{
-                prefixSm[i] = prefixSm[i-1]+arr[i];
-            }
-        }
-        
-        int q = scn.nextInt();
-        for(int i=0;i<q;i++){
-            int l = scn.nextInt();
-            int r = scn.nextInt();
-            if(l==0){
-                System.out.println(prefixSm[r]);
-            }else{
-                int res = prefixSm[r]-prefixSm[l-1];
-                System.out.println(res);
-            }
-            // int res = SumInRange(arr, l, r);
+        // int[] arr = {3,4,5,6,7,81,5};
+        // Scanner scn = new Scanner(System.in);
+        // int[] prefixSm = new int[arr.length];
+        // for(int i=0;i<arr.length;i++){
+        //     if(i==0){
+        //         prefixSm[i]= arr[i];
+        //     }else{
+        //         prefixSm[i] = prefixSm[i-1]+arr[i];
+        //     }
+        // }
+
+        // int q = scn.nextInt();
+        // for(int i=0;i<q;i++){
+        //     int l = scn.nextInt();
+        //     int r = scn.nextInt();
+        //     if(l==0){
+        //         System.out.println(prefixSm[r]);
+        //     }else{
+        //         int res = prefixSm[r]-prefixSm[l-1];
+        //         System.out.println(res);
+        //     }
+        //     // int res = SumInRange(arr, l, r);
             
+        // }
+
+        int[] arr = {1,2,0,4,3,0,5,0};
+        pushZeroesToEnd(arr);
+        for(int val:arr){
+            System.out.print(val+" ");
         }
         
+    }
+
+    public static void pushZeroesToEnd(int[] arr){
+        int countNZeroes = 0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]!=0){
+                countNZeroes++;
+                swap(arr,countNZeroes-1,i);
+            }
+        }
+    }
+
+    public static void swap(int[] arr, int i,int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
     public static boolean targetSum(int[] arr, int target) {

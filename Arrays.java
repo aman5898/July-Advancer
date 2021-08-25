@@ -42,12 +42,27 @@ public class Arrays {
 
         int[] arr = {3,4,5,6,7,81,5};
         Scanner scn = new Scanner(System.in);
+        int[] prefixSm = new int[arr.length];
+        for(int i=0;i<arr.length;i++){
+            if(i==0){
+                prefixSm[i]= arr[i];
+            }else{
+                prefixSm[i] = prefixSm[i-1]+arr[i];
+            }
+        }
+        
         int q = scn.nextInt();
         for(int i=0;i<q;i++){
             int l = scn.nextInt();
             int r = scn.nextInt();
-            int res = SumInRange(arr, l, r);
-            System.out.println(res);
+            if(l==0){
+                System.out.println(prefixSm[r]);
+            }else{
+                int res = prefixSm[r]-prefixSm[l-1];
+                System.out.println(res);
+            }
+            // int res = SumInRange(arr, l, r);
+            
         }
         
     }
@@ -70,7 +85,6 @@ public class Arrays {
         for(int i=l;i<=r;i++){
             sum+=arr[i];
         }
-
         return sum;
     }
 }

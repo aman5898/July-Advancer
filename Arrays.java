@@ -65,12 +65,31 @@ public class Arrays {
             
         // }
 
-        int[] arr = {1,2,0,4,3,0,5,0};
-        pushZeroesToEnd(arr);
-        for(int val:arr){
-            System.out.print(val+" ");
-        }
+        // int[] arr = {1,2,0,4,3,0,5,0};
+        // pushZeroesToEnd(arr);
+        // for(int val:arr){
+        //     System.out.print(val+" ");
+        // }
+
+        int[] arr = {-2,-3,4,-1,-2,1,5,-3};
+        System.out.println(KadanesAlgo(arr));
         
+    }
+
+    public static int KadanesAlgo(int[] arr){
+        // not writing for all negative array
+        int maxOverall = Integer.MIN_VALUE;
+        int sumTillNow = 0;
+        for(int i=0;i<arr.length;i++){
+            sumTillNow += arr[i];
+            maxOverall = Math.max(maxOverall, Math.max(sumTillNow, arr[i]));
+            if(sumTillNow<0){
+                sumTillNow = 0;
+            } 
+            // maxOverall = Math.max(maxOverall, sumTillNow);
+        }
+
+        return maxOverall;
     }
 
     public static void pushZeroesToEnd(int[] arr){

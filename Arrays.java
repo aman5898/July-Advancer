@@ -143,40 +143,63 @@ public class Arrays {
 
         // PrintSpiral
 
-        int[][] arr = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };
-        int sr = 0;
-        int sc = 0;
-        int er = arr.length - 1;
-        int ec = arr[0].length - 1;
+        // int[][] arr = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };
+        // int sr = 0;
+        // int sc = 0;
+        // int er = arr.length - 1;
+        // int ec = arr[0].length - 1;
 
-        while (sr <= er && sc <= ec) {
-            if (sr <= er && sc <= ec) {
-                for (int i = sc; i <= ec; i++) {
-                    System.out.print(arr[sr][i] + " ");
-                }
-                sr++;
-            }
+        // while (sr <= er && sc <= ec) {
+        //     if (sr <= er && sc <= ec) {
+        //         for (int i = sc; i <= ec; i++) {
+        //             System.out.print(arr[sr][i] + " ");
+        //         }
+        //         sr++;
+        //     }
 
-            if (sr <= er && sc <= ec) {
-                for (int i = sr; i <= er; i++) {
-                    System.out.print(arr[i][ec] + " ");
+        //     if (sr <= er && sc <= ec) {
+        //         for (int i = sr; i <= er; i++) {
+        //             System.out.print(arr[i][ec] + " ");
+        //         }
+        //         ec--;
+        //     }
+        //     if (sr <= er && sc <= ec) {
+        //         for (int i = ec; i >= sc; i--) {
+        //             System.out.print(arr[er][i] + " ");
+        //         }
+        //         er--;
+        //     }
+        //     if (sr <= er && sc <= ec) {
+        //         for (int i = er; i >= sr; i--) {
+        //             System.out.print(arr[i][sc] + " ");
+        //         }
+        //         sc++;
+        //     }
+        // }
+
+        int[][] arr1 = {{1,2,3},{4,5,6},{7,8,9}};
+        int[][] arr2 = {{1,0,0},{0,1,0},{0,0,1}};
+        MatrixMultiplication(arr1, arr2);
+
+    }
+
+    public static void MatrixMultiplication(int[][] arr1,int[][] arr2){
+        int[][] res = new int[arr1.length][arr2[0].length];
+        for(int i=0;i<arr1.length;i++){
+            for(int j=0;j<arr2[0].length;j++){
+                res[i][j] = 0;
+                for(int k=0;k<arr1[0].length;k++){
+                    res[i][j]+= arr1[i][k]*arr2[k][j];
                 }
-                ec--;
-            }
-            if (sr <= er && sc <= ec) {
-                for (int i = ec; i >= sc; i--) {
-                    System.out.print(arr[er][i] + " ");
-                }
-                er--;
-            }
-            if (sr <= er && sc <= ec) {
-                for (int i = er; i >= sr; i--) {
-                    System.out.print(arr[i][sc] + " ");
-                }
-                sc++;
             }
         }
 
+        for(int i=0;i<res.length;i++){
+            for(int j=0;j<res[0].length;j++){
+                System.out.print(res[i][j]+" ");
+            }
+            System.out.println();
+        }
     }
 
     public static int KadanesAlgo(int[] arr) {

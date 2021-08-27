@@ -112,61 +112,69 @@ public class Arrays {
         // boolean flag = false;
 
         // for (int j = 0; j < arr[0].length; j++) {
-        //     if (flag == false) {
-        //         for (int i = 0; i < arr.length; i++) {
-        //             System.out.print(arr[i][j] + " ");
-        //         }
-        //     } else {
+        // if (flag == false) {
+        // for (int i = 0; i < arr.length; i++) {
+        // System.out.print(arr[i][j] + " ");
+        // }
+        // } else {
 
-        //         for (int i = arr.length - 1; i >= 0; i--) {
-        //             System.out.print(arr[i][j] + " ");
-        //         }
-        //     }
-        //     flag = !flag;
+        // for (int i = arr.length - 1; i >= 0; i--) {
+        // System.out.print(arr[i][j] + " ");
+        // }
+        // }
+        // flag = !flag;
         // }
 
         // System.out.println();
         // flag = false;
         // for (int j = arr[0].length-1; j >=0; j--) {
-        //     if (flag == false) {
-        //         for (int i = 0; i < arr.length; i++) {
-        //             System.out.print(arr[i][j] + " ");
-        //         }
-        //     } else {
+        // if (flag == false) {
+        // for (int i = 0; i < arr.length; i++) {
+        // System.out.print(arr[i][j] + " ");
+        // }
+        // } else {
 
-        //         for (int i = arr.length - 1; i >= 0; i--) {
-        //             System.out.print(arr[i][j] + " ");
-        //         }
-        //     }
-        //     flag = !flag;
+        // for (int i = arr.length - 1; i >= 0; i--) {
+        // System.out.print(arr[i][j] + " ");
+        // }
+        // }
+        // flag = !flag;
         // }
 
         // PrintSpiral
 
-        int[][] arr = { { 1, 2, 3,4 }, { 5, 6, 7,8 }, { 9, 10, 11,12 },{13,14,15,16} };
-        int sr  = 0;
+        int[][] arr = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };
+        int sr = 0;
         int sc = 0;
-        int er = arr.length-1;
-        int ec = arr[0].length-1;
+        int er = arr.length - 1;
+        int ec = arr[0].length - 1;
 
-        while(sr<=er&&sc<=ec){
-            for(int i=sc;i<=ec;i++){
-                System.out.print(arr[sr][i]+" ");
+        while (sr <= er && sc <= ec) {
+            if (sr <= er && sc <= ec) {
+                for (int i = sc; i <= ec; i++) {
+                    System.out.print(arr[sr][i] + " ");
+                }
+                sr++;
             }
-            sr++;
-            for(int i=sr;i<=er;i++){
-                System.out.print(arr[i][ec]+" ");
-            }
-            ec--;
-            for(int i = ec;i>=sc;i--){
-                System.out.print(arr[er][i]+" ");
-            }
-            er--;
 
-            for(int i=er;i>=sr;i--){
-                System.out.print(arr[i][sc]+" ");
+            if (sr <= er && sc <= ec) {
+                for (int i = sr; i <= er; i++) {
+                    System.out.print(arr[i][ec] + " ");
+                }
+                ec--;
             }
-            sc++;
+            if (sr <= er && sc <= ec) {
+                for (int i = ec; i >= sc; i--) {
+                    System.out.print(arr[er][i] + " ");
+                }
+                er--;
+            }
+            if (sr <= er && sc <= ec) {
+                for (int i = er; i >= sr; i--) {
+                    System.out.print(arr[i][sc] + " ");
+                }
+                sc++;
+            }
         }
 
     }

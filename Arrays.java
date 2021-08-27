@@ -96,6 +96,16 @@ public class Arrays {
 
         System.out.println(sum);
 
+        // Printing Cordinates of other diagonal
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[0].length;j++){
+                if(i+j==arr.length-1){
+                    System.out.print(i+""+j+" ");
+                }
+            }
+            System.out.println();
+        }
+
     }
 
     public static int KadanesAlgo(int[] arr) {

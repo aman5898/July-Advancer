@@ -82,28 +82,63 @@ public class Arrays {
 
         // System.out.println();
 
-        int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+        // int[][] arr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 
-        int sum = 0;
-        // sum of first diagonal
-        for(int i=0;i<arr.length;i++){
-            for(int j=0;j<arr[0].length;j++){
-                if(i==j){
-                    sum+= arr[i][j];
-                }
-            }
-        }
+        // int sum = 0;
+        // // sum of first diagonal
+        // for(int i=0;i<arr.length;i++){
+        // for(int j=0;j<arr[0].length;j++){
+        // if(i==j){
+        // sum+= arr[i][j];
+        // }
+        // }
+        // }
 
-        System.out.println(sum);
+        // System.out.println(sum);
 
         // Printing Cordinates of other diagonal
-        for(int i=0;i<arr.length;i++){
-            for(int j=0;j<arr[0].length;j++){
-                if(i+j==arr.length-1){
-                    System.out.print(i+""+j+" ");
+        // for(int i=0;i<arr.length;i++){
+        // for(int j=0;j<arr[0].length;j++){
+        // if(i+j==arr.length-1){
+        // System.out.print(i+""+j+" ");
+        // }
+        // }
+        // System.out.println();
+        // }
+
+        // Print wave
+
+        int[][] arr = { { 1, 2, 3,4 }, { 5, 6, 7,8 }, { 9, 10, 11,12 } };
+        boolean flag = false;
+
+        for (int j = 0; j < arr[0].length; j++) {
+            if (flag == false) {
+                for (int i = 0; i < arr.length; i++) {
+                    System.out.print(arr[i][j] + " ");
+                }
+            } else {
+
+                for (int i = arr.length - 1; i >= 0; i--) {
+                    System.out.print(arr[i][j] + " ");
                 }
             }
-            System.out.println();
+            flag = !flag;
+        }
+
+        System.out.println();
+        flag = false;
+        for (int j = arr[0].length-1; j >=0; j--) {
+            if (flag == false) {
+                for (int i = 0; i < arr.length; i++) {
+                    System.out.print(arr[i][j] + " ");
+                }
+            } else {
+
+                for (int i = arr.length - 1; i >= 0; i--) {
+                    System.out.print(arr[i][j] + " ");
+                }
+            }
+            flag = !flag;
         }
 
     }

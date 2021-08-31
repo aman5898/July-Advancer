@@ -21,6 +21,8 @@ public class StringHelper {
 
         System.out.println(isPalindrome("malayalam"));
 
+        System.out.println(countPalindromicSubStrings("geekster"));
+
     }
 
     public static void printChars(String s) {
@@ -50,5 +52,19 @@ public class StringHelper {
         }
 
         return true;
+    }
+
+    public static int countPalindromicSubStrings(String s) {
+        int count = 0;
+        for(int i=0;i<s.length();i++){
+            for(int j=i+1;j<=s.length();j++){
+                String str = s.substring(i, j);
+                if(isPalindrome(str)==true){
+                    count++;
+                }
+            }
+        }
+
+        return count;
     }
 }

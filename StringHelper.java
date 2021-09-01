@@ -55,7 +55,13 @@ public class StringHelper {
         list2.add("Abc");
         list2.add("def");
         System.out.println(list2);
+        for(int val:list){
+            System.out.print(val+" ");
+        }
+        System.out.println();
 
+        System.out.println(list.remove(1));
+        System.out.println(list);
     }
 
     

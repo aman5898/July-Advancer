@@ -23,6 +23,46 @@ public class StringHelper {
 
         System.out.println(countPalindromicSubStrings("geekster"));
 
+
+        String str1 = "abc";
+        String str3 = "abc";
+        String str4= new String("abc");
+        String str5= new String("abc");
+        System.out.println((str5==str4));
+        System.out.println(str1);
+        str1 = "def";
+        System.out.println(str1);
+        toggleCase("Geekster");
+        System.out.println(toggleCaseBetter("Geekster"));
+
+    }
+
+    public static void toggleCase(String str){
+        String res = "";
+        for(int i=0;i<str.length();i++){
+            char ch = str.charAt(i);
+            if(ch>='a'&&ch<='z'){
+                res += (char)(ch-'a'+'A');
+            }else {
+                res += (char)(ch-'A'+'a');
+            }
+        }
+
+        System.out.println(res);
+    }
+
+    public static String toggleCaseBetter(String str){
+        StringBuilder res = new StringBuilder("");
+        for(int i=0;i<str.length();i++){
+            char ch = str.charAt(i);
+            if(ch>='a'&&ch<='z'){
+                res.append((char)(ch-'a'+'A'));
+            }else {
+                res.append((char)(ch-'A'+'a'));
+            }
+        }
+        return res.toString();
+        // System.out.println(res);
     }
 
     public static void printChars(String s) {

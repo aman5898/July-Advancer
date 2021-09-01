@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class StringHelper {
     public static void main(String[] args) {
         String str = new String("Geeksteree");
@@ -30,14 +33,32 @@ public class StringHelper {
         System.out.println((str5 == str4));
         System.out.println(str1);
         str1 = "def";
-        System.out.println(str1);
-        toggleCase("Geekster");
-        System.out.println(toggleCaseBetter("Geekster"));
-        System.out.println(OddEven("Geekster"));
-        System.out.println(InsertDiff("abcd"));
-        System.out.println(Compression("aabcdd"));
+        // System.out.println(str1);
+        // toggleCase("Geekster");
+        // System.out.println(toggleCaseBetter("Geekster"));
+        // System.out.println(OddEven("Geekster"));
+        // System.out.println(InsertDiff("abcd"));
+        // System.out.println(Compression("aabcd"));
+
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(5);
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        list.add(30);
+        System.out.println(list);
+        System.out.println(list.size());
+        System.out.println(list.get(1));
+        System.out.println(list.set(0, 50));
+        System.out.println(list);
+        ArrayList<String> list2 = new ArrayList<>();
+        list2.add("Abc");
+        list2.add("def");
+        System.out.println(list2);
 
     }
+
+    
 
     public static String Compression(String str) {
         StringBuilder sb = new StringBuilder();

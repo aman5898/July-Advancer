@@ -1,5 +1,5 @@
 public class StringHelper {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String str = new String("Geeksteree");
         String str2 = "Geekster";
 
@@ -7,11 +7,11 @@ public class StringHelper {
 
         System.out.println(str.charAt(0));
 
-        System.out.println(str.charAt(str.length()-1));
+        System.out.println(str.charAt(str.length() - 1));
 
         System.out.println(str.substring(2));
 
-        System.out.println(str.substring(1,4));
+        System.out.println(str.substring(1, 4));
 
         System.out.println(str.indexOf("ee"));
 
@@ -23,42 +23,89 @@ public class StringHelper {
 
         System.out.println(countPalindromicSubStrings("geekster"));
 
-
         String str1 = "abc";
         String str3 = "abc";
-        String str4= new String("abc");
-        String str5= new String("abc");
-        System.out.println((str5==str4));
+        String str4 = new String("abc");
+        String str5 = new String("abc");
+        System.out.println((str5 == str4));
         System.out.println(str1);
         str1 = "def";
         System.out.println(str1);
         toggleCase("Geekster");
         System.out.println(toggleCaseBetter("Geekster"));
+        System.out.println(OddEven("Geekster"));
+        System.out.println(InsertDiff("abcd"));
+        System.out.println(Compression("aabcdd"));
 
     }
 
-    public static void toggleCase(String str){
-        String res = "";
-        for(int i=0;i<str.length();i++){
+    public static String Compression(String str) {
+        StringBuilder sb = new StringBuilder();
+        int count = 1;
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (str.charAt(i) == str.charAt(i + 1)) {
+                count++;
+                continue;
+            } else {
+                sb.append(str.charAt(i));
+                sb.append(count);
+                count = 1;
+            }
+        }
+
+        sb.append(str.charAt(str.length() - 1));
+        sb.append(count);
+        return sb.toString();
+    }
+
+    public static String InsertDiff(String str) {
+        StringBuilder sb = new StringBuilder("");
+        for (int i = 0; i < str.length(); i++) {
+            sb.append(str.charAt(i));
+            if (i != str.length() - 1) {
+                sb.append(str.charAt(i + 1) - str.charAt(i));
+            }
+        }
+
+        return sb.toString();
+    }
+
+    public static String OddEven(String str) {
+        StringBuilder sb = new StringBuilder("");
+        for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
-            if(ch>='a'&&ch<='z'){
-                res += (char)(ch-'a'+'A');
-            }else {
-                res += (char)(ch-'A'+'a');
+            if (i % 2 != 0) {
+
+                sb.append((char) (ch + 1));
+            } else {
+                sb.append((char) (ch - 1));
+            }
+        }
+        return sb.toString();
+    }
+
+    public static void toggleCase(String str) {
+        String res = "";
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= 'a' && ch <= 'z') {
+                res += (char) (ch - 'a' + 'A');
+            } else {
+                res += (char) (ch - 'A' + 'a');
             }
         }
 
         System.out.println(res);
     }
 
-    public static String toggleCaseBetter(String str){
+    public static String toggleCaseBetter(String str) {
         StringBuilder res = new StringBuilder("");
-        for(int i=0;i<str.length();i++){
+        for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
-            if(ch>='a'&&ch<='z'){
-                res.append((char)(ch-'a'+'A'));
-            }else {
-                res.append((char)(ch-'A'+'a'));
+            if (ch >= 'a' && ch <= 'z') {
+                res.append((char) (ch - 'a' + 'A'));
+            } else {
+                res.append((char) (ch - 'A' + 'a'));
             }
         }
         return res.toString();
@@ -66,25 +113,25 @@ public class StringHelper {
     }
 
     public static void printChars(String s) {
-        for(int i=0;i<s.length();i++){
+        for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
             System.out.println(ch);
         }
     }
 
     public static void printSubstrings(String s) {
-        for(int i=0;i<s.length();i++){
-            for(int j=i+1;j<=s.length();j++){
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i + 1; j <= s.length(); j++) {
                 System.out.println(s.substring(i, j));
             }
         }
     }
 
     public static boolean isPalindrome(String s) {
-        int l=0;
-        int r=s.length()-1;
-        while(l<=r){
-            if(s.charAt(l)!=s.charAt(r)){
+        int l = 0;
+        int r = s.length() - 1;
+        while (l <= r) {
+            if (s.charAt(l) != s.charAt(r)) {
                 return false;
             }
             l++;
@@ -96,10 +143,10 @@ public class StringHelper {
 
     public static int countPalindromicSubStrings(String s) {
         int count = 0;
-        for(int i=0;i<s.length();i++){
-            for(int j=i+1;j<=s.length();j++){
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i + 1; j <= s.length(); j++) {
                 String str = s.substring(i, j);
-                if(isPalindrome(str)==true){
+                if (isPalindrome(str) == true) {
                     count++;
                 }
             }

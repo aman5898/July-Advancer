@@ -5,7 +5,11 @@ public class Recursion {
         // System.out.println(factorial(5));
         // System.out.println(power(3,3));
         // System.out.println(powerBtr(3, 5));
-        System.out.println(fib(6));
+        // System.out.println(fib(6));
+        int[] arr = {1,2,30,4,6};
+        // printArray(arr, 0);
+        // printreverse(arr,0);
+        System.out.println(max(arr,0));
     }
 
     public static void printIncreasing(int n) {
@@ -71,5 +75,33 @@ public class Recursion {
         int fibnm1 = fib(n-1);
         int fibnm2 = fib(n-2);
         return fibnm1 + fibnm2;
+    }
+
+    public static void printArray(int[] arr,int vidx){
+        if(vidx==arr.length){
+            return;
+        }
+
+        System.out.println(arr[vidx]);
+        printArray(arr, vidx+1);
+    }
+
+    public static void printreverse(int[] arr, int vidx){
+        if(vidx==arr.length){
+            return;
+        }
+        
+        printreverse(arr, vidx+1);
+        System.out.println(arr[vidx]);
+    }
+
+    public static int max(int[] arr,int vidx){
+
+        if(vidx==arr.length-1){
+            return arr[vidx];
+        }
+
+        int maxOfRest = max(arr,vidx+1);
+        return Math.max(maxOfRest, arr[vidx]);
     }
 }

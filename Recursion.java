@@ -4,7 +4,8 @@ public class Recursion {
         // printDecreasing(5);
         // System.out.println(factorial(5));
         // System.out.println(power(3,3));
-        System.out.println(powerBtr(3, 5));
+        // System.out.println(powerBtr(3, 5));
+        System.out.println(fib(6));
     }
 
     public static void printIncreasing(int n) {
@@ -61,5 +62,14 @@ public class Recursion {
         }else{
             return pdb2*pdb2*n;
         }
+    }
+
+    public static int fib(int n) {
+        if(n==0||n==1){
+            return 1;
+        }
+        int fibnm1 = fib(n-1);
+        int fibnm2 = fib(n-2);
+        return fibnm1 + fibnm2;
     }
 }

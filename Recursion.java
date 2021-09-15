@@ -21,8 +21,9 @@ public class Recursion {
         //     System.out.print(val+" ");
         // }
         // System.out.println();
-        String str="abc";
-        System.out.println(getSS(str));
+        // String str="abc";
+        // System.out.println(getSS(str));
+        System.out.println(getKPC("123"));
     }
 
     public static void printIncreasing(int n) {
@@ -180,7 +181,7 @@ public class Recursion {
     public static ArrayList<String> getSS(String str){
         if(str.length()==0){
             ArrayList<String> br = new ArrayList<>();
-            // br.add("");
+            br.add("");
             return br;
         }
 
@@ -199,4 +200,52 @@ public class Recursion {
         return mr;
 
     }
+    public static ArrayList<String> getKPC(String str) {
+
+        if(str.length()==0){
+            ArrayList<String> br = new ArrayList<>();
+            br.add("");
+            return br;
+        }
+        char ch = str.charAt(0);
+        String ros = str.substring(1);
+        ArrayList<String> rr = getKPC(ros);
+        String choices = getChoice(ch);
+
+        ArrayList<String> mr = new ArrayList<>();
+
+        for(String s:rr){
+            for(int i=0;i<choices.length();i++){
+                mr.add(choices.charAt(i)+s);
+            }
+        }
+
+        return mr;
+    }                 
+
+    public static String getChoice(char key) {
+		if (key == '1') {
+			return "abc";
+		} else if (key == '2') {
+			return "def";
+		} else if (key == '3') {
+			return "ghi";
+		} else if (key == '4') {
+			return "jkl";
+		} else if (key == '5') {
+			return "mno";
+		} else if (key == '6') {
+			return "pqr";
+		} else if (key == '7') {
+			return "stu";
+		} else if (key == '8') {
+			return "vwx";
+		} else if (key == '9') {
+			return "yz";
+		} else if (key == '0') {
+			return "abc";
+		}
+
+		return "";
+	}
 }

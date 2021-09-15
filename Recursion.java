@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Recursion {
     public static void main(String[] args) {
         // printIncreasing(5);
@@ -10,15 +12,17 @@ public class Recursion {
         // printArray(arr, 0);
         // printreverse(arr,0);
         // System.out.println(max(arr,0));
-        int[] arr = {1,1,3,3,5,1,3};
-        // System.out.println(find(arr,1,0));
-        // System.out.println(firstIndex(arr, 30, 0));
-        // System.out.println(lastIndex(arr, 3, 0));
-        int[] ret = allIndices(arr,0,3,0);
-        for(int val:ret){
-            System.out.print(val+" ");
-        }
-        System.out.println();
+        // int[] arr = {1,1,3,3,5,1,3};
+        // // System.out.println(find(arr,1,0));
+        // // System.out.println(firstIndex(arr, 30, 0));
+        // // System.out.println(lastIndex(arr, 3, 0));
+        // int[] ret = allIndices(arr,0,3,0);
+        // for(int val:ret){
+        //     System.out.print(val+" ");
+        // }
+        // System.out.println();
+        String str="abc";
+        System.out.println(getSS(str));
     }
 
     public static void printIncreasing(int n) {
@@ -171,5 +175,28 @@ public class Recursion {
             int[] retArr = allIndices(arr,vidx+1,data,fsf);
             return retArr;
         }
+    }
+
+    public static ArrayList<String> getSS(String str){
+        if(str.length()==0){
+            ArrayList<String> br = new ArrayList<>();
+            // br.add("");
+            return br;
+        }
+
+        char ch = str.charAt(0);
+        String ros = str.substring(1);
+        ArrayList<String> rr = getSS(ros);     
+       
+       
+       
+        ArrayList<String> mr = new ArrayList<>();
+        for(String s:rr){
+            mr.add(s);
+            mr.add(ch+s);
+        }
+
+        return mr;
+
     }
 }

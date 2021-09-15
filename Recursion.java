@@ -23,7 +23,8 @@ public class Recursion {
         // System.out.println();
         // String str="abc";
         // System.out.println(getSS(str));
-        System.out.println(getKPC("123"));
+        // System.out.println(getKPC("123"));
+        System.out.println(getPerm("abc"));
     }
 
     public static void printIncreasing(int n) {
@@ -248,4 +249,26 @@ public class Recursion {
 
 		return "";
 	}
+
+    public static ArrayList<String> getPerm(String s) {
+
+		if (s.length() == 0) {
+			ArrayList<String> br = new ArrayList<String>();
+			br.add("");
+			return br;
+		}
+		char ch = s.charAt(0);
+		String ros = s.substring(1);
+
+		ArrayList<String> rr = getPerm(ros);
+		ArrayList<String> mr = new ArrayList<String>();
+        for(String str:rr){
+            for(int i=0;i<=str.length();i++){
+                String finalString = str.substring(0,i)+ch+str.substring(i);
+                mr.add(finalString);
+            }
+        }
+
+        return mr;
+    }
 }

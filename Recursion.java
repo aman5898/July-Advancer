@@ -6,10 +6,14 @@ public class Recursion {
         // System.out.println(power(3,3));
         // System.out.println(powerBtr(3, 5));
         // System.out.println(fib(6));
-        int[] arr = {1,2,30,4,6};
+        // int[] arr = {1,2,30,4,6};
         // printArray(arr, 0);
         // printreverse(arr,0);
-        System.out.println(max(arr,0));
+        // System.out.println(max(arr,0));
+        int[] arr = {1,1,3,3,5,1,3};
+        // System.out.println(find(arr,1,0));
+        System.out.println(firstIndex(arr, 30, 0));
+        System.out.println(lastIndex(arr, 3, 0));
     }
 
     public static void printIncreasing(int n) {
@@ -103,5 +107,48 @@ public class Recursion {
 
         int maxOfRest = max(arr,vidx+1);
         return Math.max(maxOfRest, arr[vidx]);
+    }
+
+    public static boolean find(int[] arr, int val,int vidx){
+
+        if(vidx==arr.length){
+            return false;
+        }
+
+        if(arr[vidx]==val){
+            return true;
+        }
+
+        return find(arr,val,vidx+1);
+    }
+
+    public static int firstIndex(int[] arr,int val,int vidx){
+        if(vidx==arr.length){
+            return -1;
+        }
+
+        if(arr[vidx]==val){
+            return vidx;
+        }
+
+        return firstIndex(arr,val,vidx+1);
+    }
+
+    public static int lastIndex(int[] arr,int val,int vidx){
+        if(vidx==arr.length){
+            return -1;
+        }
+
+
+        int res = lastIndex(arr,val,vidx+1);
+        if(res==-1){
+            if(arr[vidx]==val){
+                return vidx;
+            }else{
+                return -1;
+            }
+        }else{
+            return res;
+        }
     }
 }

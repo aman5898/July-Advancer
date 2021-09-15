@@ -12,8 +12,13 @@ public class Recursion {
         // System.out.println(max(arr,0));
         int[] arr = {1,1,3,3,5,1,3};
         // System.out.println(find(arr,1,0));
-        System.out.println(firstIndex(arr, 30, 0));
-        System.out.println(lastIndex(arr, 3, 0));
+        // System.out.println(firstIndex(arr, 30, 0));
+        // System.out.println(lastIndex(arr, 3, 0));
+        int[] ret = allIndices(arr,0,3,0);
+        for(int val:ret){
+            System.out.print(val+" ");
+        }
+        System.out.println();
     }
 
     public static void printIncreasing(int n) {
@@ -149,6 +154,22 @@ public class Recursion {
             }
         }else{
             return res;
+        }
+    }
+
+    public static int[] allIndices(int[] arr, int vidx, int data, int fsf) {
+        if(vidx==arr.length){
+            int[] retArr = new int[fsf];
+            return retArr;
+        }
+
+        if(arr[vidx]==data){
+            int[] retArr = allIndices(arr,vidx+1,data,fsf+1);
+            retArr[fsf] = vidx;
+            return retArr;
+        }else{
+            int[] retArr = allIndices(arr,vidx+1,data,fsf);
+            return retArr;
         }
     }
 }

@@ -24,7 +24,8 @@ public class Recursion {
         // String str="abc";
         // System.out.println(getSS(str));
         // System.out.println(getKPC("123"));
-        System.out.println(getPerm("abc"));
+        // System.out.println(getPerm("abc"));
+        System.out.println(getBoardPaths(0, 10));
     }
 
     public static void printIncreasing(int n) {
@@ -266,6 +267,30 @@ public class Recursion {
             for(int i=0;i<=str.length();i++){
                 String finalString = str.substring(0,i)+ch+str.substring(i);
                 mr.add(finalString);
+            }
+        }
+
+        return mr;
+    }
+
+    public static ArrayList<String> getBoardPaths(int curr, int end) {
+
+        if(curr==end){
+            ArrayList<String> br = new ArrayList<>();
+            br.add("");
+            return br;
+        }
+
+        if(curr>end){
+            ArrayList<String> br = new ArrayList<>();
+            return br;
+        }
+
+        ArrayList<String> mr = new ArrayList<String>();
+        for(int dice=1;dice<=6;dice++){
+            ArrayList<String>rr = getBoardPaths(curr+dice, end);
+            for(String str:rr){
+                mr.add(dice+str);
             }
         }
 

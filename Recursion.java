@@ -26,7 +26,8 @@ public class Recursion {
         // System.out.println(getKPC("123"));
         // System.out.println(getPerm("abc"));
         // System.out.println(getBoardPaths(0, 10));
-        System.out.println(getMazePaths(0,0,2,2));
+        // System.out.println(getMazePaths(0,0,2,2));
+        System.out.println(getMazePathsWithDiagonals(0,0,2,2));
     }
 
     public static void printIncreasing(int n) {
@@ -321,6 +322,39 @@ public class Recursion {
         ArrayList<String>rrr = getMazePaths(cr, cc+1, er, ec);
         for(String str:rrr){
             mr.add("R"+str);
+        }
+
+        return mr;
+    }
+
+    public static ArrayList<String> getMazePathsWithDiagonals(int cr, int cc, int er, int ec) {
+
+        if(cr==er&&cc==ec){
+            ArrayList<String> br = new ArrayList<>();
+            br.add(""); 
+            return br;
+        }
+
+        if(cr>er||cc>ec){
+            ArrayList<String> br = new ArrayList<>();
+            return br;
+        }
+
+        ArrayList<String> mr = new ArrayList<>();
+
+        ArrayList<String>rrd = getMazePathsWithDiagonals(cr+1, cc, er, ec);
+        for(String str:rrd){
+            mr.add("V"+str);
+        }
+
+        ArrayList<String>rrr = getMazePathsWithDiagonals(cr, cc+1, er, ec);
+        for(String str:rrr){
+            mr.add("H"+str);
+        }
+
+        ArrayList<String>rr = getMazePathsWithDiagonals(cr+1, cc+1, er, ec);
+        for(String str:rr){
+            mr.add("D"+str);
         }
 
         return mr;

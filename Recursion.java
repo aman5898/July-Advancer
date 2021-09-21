@@ -18,7 +18,7 @@ public class Recursion {
         // // System.out.println(lastIndex(arr, 3, 0));
         // int[] ret = allIndices(arr,0,3,0);
         // for(int val:ret){
-        //     System.out.print(val+" ");
+        // System.out.print(val+" ");
         // }
         // System.out.println();
         // String str="abc";
@@ -29,7 +29,8 @@ public class Recursion {
         // System.out.println(getMazePaths(0,0,2,2));
         // System.out.println(getMazePathsWithDiagonals(0,0,2,2));
         // printSS("abc","");
-        printPermutations("abc","");
+        // printPermutations("abc", "");
+        printKPC("12","");
     }
 
     public static void printIncreasing(int n) {
@@ -56,136 +57,135 @@ public class Recursion {
         printDecreasing(n - 1);
     }
 
-    public static int factorial(int n){
+    public static int factorial(int n) {
 
-        if(n==0){
+        if (n == 0) {
             return 1;
         }
 
         // faith
-        int fnm1 = factorial(n-1);
-        return n*fnm1;
+        int fnm1 = factorial(n - 1);
+        return n * fnm1;
     }
 
-    public static int power(int n, int k){
-        if(k==0){
+    public static int power(int n, int k) {
+        if (k == 0) {
             return 1;
         }
-        int nkm1 = power(n,k-1);
+        int nkm1 = power(n, k - 1);
 
-        return nkm1*n;
+        return nkm1 * n;
     }
 
-    public static int powerBtr(int n, int k){
-        if(k==0){
+    public static int powerBtr(int n, int k) {
+        if (k == 0) {
             return 1;
         }
-        int pdb2 = powerBtr(n,k/2);
-        if(k%2==0){
-            return pdb2*pdb2;
-        }else{
-            return pdb2*pdb2*n;
+        int pdb2 = powerBtr(n, k / 2);
+        if (k % 2 == 0) {
+            return pdb2 * pdb2;
+        } else {
+            return pdb2 * pdb2 * n;
         }
     }
 
     public static int fib(int n) {
-        if(n==0||n==1){
+        if (n == 0 || n == 1) {
             return 1;
         }
-        int fibnm1 = fib(n-1);
-        int fibnm2 = fib(n-2);
+        int fibnm1 = fib(n - 1);
+        int fibnm2 = fib(n - 2);
         return fibnm1 + fibnm2;
     }
 
-    public static void printArray(int[] arr,int vidx){
-        if(vidx==arr.length){
+    public static void printArray(int[] arr, int vidx) {
+        if (vidx == arr.length) {
             return;
         }
 
         System.out.println(arr[vidx]);
-        printArray(arr, vidx+1);
+        printArray(arr, vidx + 1);
     }
 
-    public static void printreverse(int[] arr, int vidx){
-        if(vidx==arr.length){
+    public static void printreverse(int[] arr, int vidx) {
+        if (vidx == arr.length) {
             return;
         }
-        
-        printreverse(arr, vidx+1);
+
+        printreverse(arr, vidx + 1);
         System.out.println(arr[vidx]);
     }
 
-    public static int max(int[] arr,int vidx){
+    public static int max(int[] arr, int vidx) {
 
-        if(vidx==arr.length-1){
+        if (vidx == arr.length - 1) {
             return arr[vidx];
         }
 
-        int maxOfRest = max(arr,vidx+1);
+        int maxOfRest = max(arr, vidx + 1);
         return Math.max(maxOfRest, arr[vidx]);
     }
 
-    public static boolean find(int[] arr, int val,int vidx){
+    public static boolean find(int[] arr, int val, int vidx) {
 
-        if(vidx==arr.length){
+        if (vidx == arr.length) {
             return false;
         }
 
-        if(arr[vidx]==val){
+        if (arr[vidx] == val) {
             return true;
         }
 
-        return find(arr,val,vidx+1);
+        return find(arr, val, vidx + 1);
     }
 
-    public static int firstIndex(int[] arr,int val,int vidx){
-        if(vidx==arr.length){
+    public static int firstIndex(int[] arr, int val, int vidx) {
+        if (vidx == arr.length) {
             return -1;
         }
 
-        if(arr[vidx]==val){
+        if (arr[vidx] == val) {
             return vidx;
         }
 
-        return firstIndex(arr,val,vidx+1);
+        return firstIndex(arr, val, vidx + 1);
     }
 
-    public static int lastIndex(int[] arr,int val,int vidx){
-        if(vidx==arr.length){
+    public static int lastIndex(int[] arr, int val, int vidx) {
+        if (vidx == arr.length) {
             return -1;
         }
 
-
-        int res = lastIndex(arr,val,vidx+1);
-        if(res==-1){
-            if(arr[vidx]==val){
+        int res = lastIndex(arr, val, vidx + 1);
+        if (res == -1) {
+            if (arr[vidx] == val) {
                 return vidx;
-            }else{
+            } else {
                 return -1;
             }
-        }else{
+        } else {
             return res;
         }
     }
 
     public static int[] allIndices(int[] arr, int vidx, int data, int fsf) {
-        if(vidx==arr.length){
+        if (vidx == arr.length) {
             int[] retArr = new int[fsf];
             return retArr;
         }
 
-        if(arr[vidx]==data){
-            int[] retArr = allIndices(arr,vidx+1,data,fsf+1);
+        if (arr[vidx] == data) {
+            int[] retArr = allIndices(arr, vidx + 1, data, fsf + 1);
             retArr[fsf] = vidx;
             return retArr;
-        }else{
-            int[] retArr = allIndices(arr,vidx+1,data,fsf);
+        } else {
+            int[] retArr = allIndices(arr, vidx + 1, data, fsf);
             return retArr;
         }
     }
 
-    public static ArrayList<String> getSS(String str){
-        if(str.length()==0){
+    public static ArrayList<String> getSS(String str) {
+        if (str.length() == 0) {
             ArrayList<String> br = new ArrayList<>();
             br.add("");
             return br;
@@ -193,22 +193,21 @@ public class Recursion {
 
         char ch = str.charAt(0);
         String ros = str.substring(1);
-        ArrayList<String> rr = getSS(ros);     
-       
-       
-       
+        ArrayList<String> rr = getSS(ros);
+
         ArrayList<String> mr = new ArrayList<>();
-        for(String s:rr){
+        for (String s : rr) {
             mr.add(s);
-            mr.add(ch+s);
+            mr.add(ch + s);
         }
 
         return mr;
 
     }
+
     public static ArrayList<String> getKPC(String str) {
 
-        if(str.length()==0){
+        if (str.length() == 0) {
             ArrayList<String> br = new ArrayList<>();
             br.add("");
             return br;
@@ -220,56 +219,56 @@ public class Recursion {
 
         ArrayList<String> mr = new ArrayList<>();
 
-        for(String s:rr){
-            for(int i=0;i<choices.length();i++){
-                mr.add(choices.charAt(i)+s);
+        for (String s : rr) {
+            for (int i = 0; i < choices.length(); i++) {
+                mr.add(choices.charAt(i) + s);
             }
         }
 
         return mr;
-    }                 
+    }
 
     public static String getChoice(char key) {
-		if (key == '1') {
-			return "abc";
-		} else if (key == '2') {
-			return "def";
-		} else if (key == '3') {
-			return "ghi";
-		} else if (key == '4') {
-			return "jkl";
-		} else if (key == '5') {
-			return "mno";
-		} else if (key == '6') {
-			return "pqr";
-		} else if (key == '7') {
-			return "stu";
-		} else if (key == '8') {
-			return "vwx";
-		} else if (key == '9') {
-			return "yz";
-		} else if (key == '0') {
-			return "abc";
-		}
+        if (key == '1') {
+            return "abc";
+        } else if (key == '2') {
+            return "def";
+        } else if (key == '3') {
+            return "ghi";
+        } else if (key == '4') {
+            return "jkl";
+        } else if (key == '5') {
+            return "mno";
+        } else if (key == '6') {
+            return "pqr";
+        } else if (key == '7') {
+            return "stu";
+        } else if (key == '8') {
+            return "vwx";
+        } else if (key == '9') {
+            return "yz";
+        } else if (key == '0') {
+            return "abc";
+        }
 
-		return "";
-	}
+        return "";
+    }
 
     public static ArrayList<String> getPerm(String s) {
 
-		if (s.length() == 0) {
-			ArrayList<String> br = new ArrayList<String>();
-			br.add("");
-			return br;
-		}
-		char ch = s.charAt(0);
-		String ros = s.substring(1);
+        if (s.length() == 0) {
+            ArrayList<String> br = new ArrayList<String>();
+            br.add("");
+            return br;
+        }
+        char ch = s.charAt(0);
+        String ros = s.substring(1);
 
-		ArrayList<String> rr = getPerm(ros);
-		ArrayList<String> mr = new ArrayList<String>();
-        for(String str:rr){
-            for(int i=0;i<=str.length();i++){
-                String finalString = str.substring(0,i)+ch+str.substring(i);
+        ArrayList<String> rr = getPerm(ros);
+        ArrayList<String> mr = new ArrayList<String>();
+        for (String str : rr) {
+            for (int i = 0; i <= str.length(); i++) {
+                String finalString = str.substring(0, i) + ch + str.substring(i);
                 mr.add(finalString);
             }
         }
@@ -279,22 +278,22 @@ public class Recursion {
 
     public static ArrayList<String> getBoardPaths(int curr, int end) {
 
-        if(curr==end){
+        if (curr == end) {
             ArrayList<String> br = new ArrayList<>();
-            br.add(""); 
+            br.add("");
             return br;
         }
 
-        if(curr>end){
+        if (curr > end) {
             ArrayList<String> br = new ArrayList<>();
             return br;
         }
 
         ArrayList<String> mr = new ArrayList<String>();
-        for(int dice=1;dice<=6;dice++){
-            ArrayList<String>rr = getBoardPaths(curr+dice, end);
-            for(String str:rr){
-                mr.add(dice+str);
+        for (int dice = 1; dice <= 6; dice++) {
+            ArrayList<String> rr = getBoardPaths(curr + dice, end);
+            for (String str : rr) {
+                mr.add(dice + str);
             }
         }
 
@@ -303,27 +302,27 @@ public class Recursion {
 
     public static ArrayList<String> getMazePaths(int cr, int cc, int er, int ec) {
 
-        if(cr==er&&cc==ec){
+        if (cr == er && cc == ec) {
             ArrayList<String> br = new ArrayList<>();
-            br.add(""); 
+            br.add("");
             return br;
         }
 
-        if(cr>er||cc>ec){
+        if (cr > er || cc > ec) {
             ArrayList<String> br = new ArrayList<>();
             return br;
         }
 
         ArrayList<String> mr = new ArrayList<>();
 
-        ArrayList<String>rrd = getMazePaths(cr+1, cc, er, ec);
-        for(String str:rrd){
-            mr.add("D"+str);
+        ArrayList<String> rrd = getMazePaths(cr + 1, cc, er, ec);
+        for (String str : rrd) {
+            mr.add("D" + str);
         }
 
-        ArrayList<String>rrr = getMazePaths(cr, cc+1, er, ec);
-        for(String str:rrr){
-            mr.add("R"+str);
+        ArrayList<String> rrr = getMazePaths(cr, cc + 1, er, ec);
+        for (String str : rrr) {
+            mr.add("R" + str);
         }
 
         return mr;
@@ -331,58 +330,74 @@ public class Recursion {
 
     public static ArrayList<String> getMazePathsWithDiagonals(int cr, int cc, int er, int ec) {
 
-        if(cr==er&&cc==ec){
+        if (cr == er && cc == ec) {
             ArrayList<String> br = new ArrayList<>();
-            br.add(""); 
+            br.add("");
             return br;
         }
 
-        if(cr>er||cc>ec){
+        if (cr > er || cc > ec) {
             ArrayList<String> br = new ArrayList<>();
             return br;
         }
 
         ArrayList<String> mr = new ArrayList<>();
 
-        ArrayList<String>rrd = getMazePathsWithDiagonals(cr+1, cc, er, ec);
-        for(String str:rrd){
-            mr.add("V"+str);
+        ArrayList<String> rrd = getMazePathsWithDiagonals(cr + 1, cc, er, ec);
+        for (String str : rrd) {
+            mr.add("V" + str);
         }
 
-        ArrayList<String>rrr = getMazePathsWithDiagonals(cr, cc+1, er, ec);
-        for(String str:rrr){
-            mr.add("H"+str);
+        ArrayList<String> rrr = getMazePathsWithDiagonals(cr, cc + 1, er, ec);
+        for (String str : rrr) {
+            mr.add("H" + str);
         }
 
-        ArrayList<String>rr = getMazePathsWithDiagonals(cr+1, cc+1, er, ec);
-        for(String str:rr){
-            mr.add("D"+str);
+        ArrayList<String> rr = getMazePathsWithDiagonals(cr + 1, cc + 1, er, ec);
+        for (String str : rr) {
+            mr.add("D" + str);
         }
 
         return mr;
     }
 
-    public static void printSS(String ques,String ans){
-        if(ques.length()==0){
+    public static void printSS(String ques, String ans) {
+        if (ques.length() == 0) {
             System.out.println(ans);
             return;
         }
         char ch = ques.charAt(0);
         String ros = ques.substring(1);
 
-        printSS(ros,ans+ch);
-        printSS(ros,ans);
+        printSS(ros, ans + ch);
+        printSS(ros, ans);
     }
 
-    public static void printPermutations(String ques,String ans){
-        if(ques.length()==0){
+    public static void printPermutations(String ques, String ans) {
+        if (ques.length() == 0) {
             System.out.println(ans);
             return;
         }
-        for(int i=0;i<ques.length();i++){
+        for (int i = 0; i < ques.length(); i++) {
             char ch = ques.charAt(i);
-            String ros = ques.substring(0,i)+ques.substring(i+1);
-            printPermutations(ros, ans+ch);
+            String ros = ques.substring(0, i) + ques.substring(i + 1);
+            printPermutations(ros, ans + ch);
         }
+    }
+
+    public static void printKPC(String ques, String ans) {
+
+        if (ques.length() == 0) {
+            System.out.println(ans);
+            return;
+        }
+        char ch = ques.charAt(0);
+        String ros = ques.substring(1);
+        String choices = getChoice(ch);
+        for (int i = 0; i < choices.length(); i++) {
+            char choice = choices.charAt(i);
+            printKPC(ros, ans + choice);
+        }
+
     }
 }

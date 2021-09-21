@@ -30,7 +30,9 @@ public class Recursion {
         // System.out.println(getMazePathsWithDiagonals(0,0,2,2));
         // printSS("abc","");
         // printPermutations("abc", "");
-        printKPC("12","");
+        // printKPC("12","");
+        int[] arr = { 10, 20, 30, 40, 5, 11, 6, 9 };
+		printTargetSS(arr, 0, 60, "");
     }
 
     public static void printIncreasing(int n) {
@@ -399,5 +401,17 @@ public class Recursion {
             printKPC(ros, ans + choice);
         }
 
+    }
+
+    public static void printTargetSS(int[] arr, int vidx, int target, String asf) {
+        if(vidx==arr.length){
+            if(target==0){
+                System.out.println(asf);
+            }
+            return;
+        }
+
+        printTargetSS(arr, vidx+1, target-arr[vidx], asf+"\t"+arr[vidx]);
+        printTargetSS(arr, vidx+1, target, asf);
     }
 }

@@ -35,7 +35,8 @@ public class Recursion {
         // printTargetSS(arr, 0, 60, "");
 
         // printBoardPaths(0, 10, "");
-        printBoardPathsPro(0, 10, "");
+        // printBoardPathsPro(0, 10, "");
+        printMazePaths(0,0,2,2,"");
     }
 
     public static void printIncreasing(int n) {
@@ -446,5 +447,18 @@ public class Recursion {
                 printBoardPaths(curr + i, end, ans + i);
             }
         }
+    }
+
+    public static void printMazePaths(int cr, int cc, int er, int ec, String psf) {
+        if(cr==er&&cc==ec){
+            System.out.println(psf);
+            return;
+        }
+
+        if(cr>ec||cc>ec){
+            return;
+        }
+        printMazePaths(cr+1, cc, er, ec, psf+"V");
+        printMazePaths(cr, cc+1, er, ec, psf+"H");
     }
 }

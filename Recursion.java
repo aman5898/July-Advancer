@@ -27,7 +27,8 @@ public class Recursion {
         // System.out.println(getPerm("abc"));
         // System.out.println(getBoardPaths(0, 10));
         // System.out.println(getMazePaths(0,0,2,2));
-        System.out.println(getMazePathsWithDiagonals(0,0,2,2));
+        // System.out.println(getMazePathsWithDiagonals(0,0,2,2));
+        printSS("abc","");
     }
 
     public static void printIncreasing(int n) {
@@ -358,5 +359,17 @@ public class Recursion {
         }
 
         return mr;
+    }
+
+    public static void printSS(String ques,String ans){
+        if(ques.length()==0){
+            System.out.println(ans);
+            return;
+        }
+        char ch = ques.charAt(0);
+        String ros = ques.substring(1);
+
+        printSS(ros,ans+ch);
+        printSS(ros,ans);
     }
 }

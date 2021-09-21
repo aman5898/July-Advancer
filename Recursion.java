@@ -31,8 +31,11 @@ public class Recursion {
         // printSS("abc","");
         // printPermutations("abc", "");
         // printKPC("12","");
-        int[] arr = { 10, 20, 30, 40, 5, 11, 6, 9 };
-		printTargetSS(arr, 0, 60, "");
+        // int[] arr = { 10, 20, 30, 40, 5, 11, 6, 9 };
+        // printTargetSS(arr, 0, 60, "");
+
+        // printBoardPaths(0, 10, "");
+        printBoardPathsPro(0, 10, "");
     }
 
     public static void printIncreasing(int n) {
@@ -404,14 +407,44 @@ public class Recursion {
     }
 
     public static void printTargetSS(int[] arr, int vidx, int target, String asf) {
-        if(vidx==arr.length){
-            if(target==0){
+        if (vidx == arr.length) {
+            if (target == 0) {
                 System.out.println(asf);
             }
             return;
         }
 
-        printTargetSS(arr, vidx+1, target-arr[vidx], asf+"\t"+arr[vidx]);
-        printTargetSS(arr, vidx+1, target, asf);
+        printTargetSS(arr, vidx + 1, target - arr[vidx], asf + "\t" + arr[vidx]);
+        printTargetSS(arr, vidx + 1, target, asf);
+    }
+
+    // Reactive Code
+    public static void printBoardPaths(int curr, int end, String ans) {
+        if (curr == end) {
+            System.out.println(ans);
+            return;
+        }
+
+        if (curr > end) {
+            return;
+        }
+
+        for (int i = 1; i <= 6; i++) {
+            printBoardPaths(curr + i, end, ans + i);
+        }
+    }
+
+    // ProActive Code
+    public static void printBoardPathsPro(int curr, int end, String ans) {
+        if (curr == end) {
+            System.out.println(ans);
+            return;
+        }
+
+        for (int i = 1; i <= 6; i++) {
+            if (curr + i <= end) {
+                printBoardPaths(curr + i, end, ans + i);
+            }
+        }
     }
 }

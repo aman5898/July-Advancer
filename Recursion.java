@@ -461,4 +461,25 @@ public class Recursion {
         printMazePaths(cr+1, cc, er, ec, psf+"V");
         printMazePaths(cr, cc+1, er, ec, psf+"H");
     }
+
+    public static void printNQueens(boolean[][] board, int row, String asf) {
+        if(row==board.length){
+            System.out.println(asf);
+            return;
+        }
+        for(int j=0;j<board.length;j++){
+            if(isItSafe(board,row,j)==true){
+                board[row][j] = true;
+                printNQueens(board, row+1, asf+row+""+j+" ");
+            }
+        }
+    }
+
+    private static boolean isItSafe(boolean[][] board, int i, int j) {
+        // my col
+        // first diagonal
+        // second diagonal
+    }
+
+    
 }

@@ -39,7 +39,10 @@ public class Recursion {
         // printMazePaths(0,0,2,2,"");
         // boolean[][] board = new boolean[4][4];
         // printNQueens(board, 0, "");
-        towerOfHanoi(5,'A','B','C');
+        // towerOfHanoi(5, 'A', 'B', 'C');
+        int[] arr = {2, 1, 4, 5, 6};
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        KPartitions(arr, 0, list, 3);
     }
 
     public static void printIncreasing(int n) {
@@ -511,12 +514,41 @@ public class Recursion {
     }
 
     public static void towerOfHanoi(int n, char start, char end, char helper) {
-        if(n==0){
+        if (n == 0) {
             return;
         }
-        towerOfHanoi(n-1, start, helper, end);
-        System.out.println(n+"th disk move from "+start+" to "+end);
-        towerOfHanoi(n-1, helper, end, start);
+        towerOfHanoi(n - 1, start, helper, end);
+        System.out.println(n + "th disk move from " + start + " to " + end);
+        towerOfHanoi(n - 1, helper, end, start);
+    }
+
+    public static void KPartitions(int[] arr, int vidx, ArrayList<ArrayList<Integer>> list, int k) {
+        if (vidx == arr.length) {
+            if (list.size() == k) {
+                System.out.println(list);
+            }
+
+            return;
+        }
+
+        if (list.size() == 0) {
+            list.add(new ArrayList<Integer>());
+            list.get(0).add(arr[vidx]);
+            KPartitions(arr, vidx + 1, list, k);
+            list.remove(0);
+        } else {
+            for (int i = 0; i < list.size(); i++) {
+                list.get(i).add(arr[vidx]);
+                KPartitions(arr, vidx + 1, list, k);
+                list.get(i).remove(list.get(i).size() - 1);
+            }
+            if (list.size() < k) {
+                list.add(new ArrayList<Integer>());
+                list.get(list.size() - 1).add(arr[vidx]);
+                KPartitions(arr, vidx + 1, list, k);
+                list.remove(list.size() - 1);
+            }
+        }
     }
 
 }

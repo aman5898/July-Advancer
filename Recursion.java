@@ -37,8 +37,9 @@ public class Recursion {
         // printBoardPaths(0, 10, "");
         // printBoardPathsPro(0, 10, "");
         // printMazePaths(0,0,2,2,"");
-        boolean[][] board = new boolean[4][4];
-        printNQueens(board, 0, "");
+        // boolean[][] board = new boolean[4][4];
+        // printNQueens(board, 0, "");
+        towerOfHanoi(5,'A','B','C');
     }
 
     public static void printIncreasing(int n) {
@@ -452,27 +453,27 @@ public class Recursion {
     }
 
     public static void printMazePaths(int cr, int cc, int er, int ec, String psf) {
-        if(cr==er&&cc==ec){
+        if (cr == er && cc == ec) {
             System.out.println(psf);
             return;
         }
 
-        if(cr>ec||cc>ec){
+        if (cr > ec || cc > ec) {
             return;
         }
-        printMazePaths(cr+1, cc, er, ec, psf+"V");
-        printMazePaths(cr, cc+1, er, ec, psf+"H");
+        printMazePaths(cr + 1, cc, er, ec, psf + "V");
+        printMazePaths(cr, cc + 1, er, ec, psf + "H");
     }
 
     public static void printNQueens(boolean[][] board, int row, String asf) {
-        if(row==board.length){
+        if (row == board.length) {
             System.out.println(asf);
             return;
         }
-        for(int j=0;j<board.length;j++){
-            if(isItSafe(board,row,j)==true){
+        for (int j = 0; j < board.length; j++) {
+            if (isItSafe(board, row, j) == true) {
                 board[row][j] = true;
-                printNQueens(board, row+1, asf+row+""+j+" ");
+                printNQueens(board, row + 1, asf + row + "" + j + " ");
                 board[row][j] = false;
             }
         }
@@ -480,35 +481,42 @@ public class Recursion {
 
     private static boolean isItSafe(boolean[][] board, int row, int col) {
         // my col
-        for(int i=0;i<row;i++){
-            if(board[i][col]==true){
+        for (int i = 0; i < row; i++) {
+            if (board[i][col] == true) {
                 return false;
             }
         }
         // first diagonal
-        int i=row-1;
-        int j=col-1;
-        while(i>=0&&j>=0){
-            if(board[i][j]==true){
+        int i = row - 1;
+        int j = col - 1;
+        while (i >= 0 && j >= 0) {
+            if (board[i][j] == true) {
                 return false;
             }
             i--;
             j--;
         }
         // second diagonal
-        i=row-1;
-        j=col+1;
-        while(i>=0&&j<board.length){
-            if(board[i][j]==true){
+        i = row - 1;
+        j = col + 1;
+        while (i >= 0 && j < board.length) {
+            if (board[i][j] == true) {
                 return false;
             }
             i--;
             j++;
         }
 
-
         return true;
     }
 
-    
+    public static void towerOfHanoi(int n, char start, char end, char helper) {
+        if(n==0){
+            return;
+        }
+        towerOfHanoi(n-1, start, helper, end);
+        System.out.println(n+"th disk move from "+start+" to "+end);
+        towerOfHanoi(n-1, helper, end, start);
+    }
+
 }

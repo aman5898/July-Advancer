@@ -36,7 +36,9 @@ public class Recursion {
 
         // printBoardPaths(0, 10, "");
         // printBoardPathsPro(0, 10, "");
-        printMazePaths(0,0,2,2,"");
+        // printMazePaths(0,0,2,2,"");
+        boolean[][] board = new boolean[4][4];
+        printNQueens(board, 0, "");
     }
 
     public static void printIncreasing(int n) {
@@ -471,14 +473,41 @@ public class Recursion {
             if(isItSafe(board,row,j)==true){
                 board[row][j] = true;
                 printNQueens(board, row+1, asf+row+""+j+" ");
+                board[row][j] = false;
             }
         }
     }
 
-    private static boolean isItSafe(boolean[][] board, int i, int j) {
+    private static boolean isItSafe(boolean[][] board, int row, int col) {
         // my col
+        for(int i=0;i<row;i++){
+            if(board[i][col]==true){
+                return false;
+            }
+        }
         // first diagonal
+        int i=row-1;
+        int j=col-1;
+        while(i>=0&&j>=0){
+            if(board[i][j]==true){
+                return false;
+            }
+            i--;
+            j--;
+        }
         // second diagonal
+        i=row-1;
+        j=col+1;
+        while(i>=0&&j<board.length){
+            if(board[i][j]==true){
+                return false;
+            }
+            i--;
+            j++;
+        }
+
+
+        return true;
     }
 
     

@@ -1,69 +1,86 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class StringHelper {
     public static void main(String[] args) {
-        String str = new String("Geeksteree");
-        String str2 = "Geekster";
+        // String str = new String("Geeksteree");
+        // String str2 = "Geekster";
 
-        System.out.println(str.length());
+        // System.out.println(str.length());
 
-        System.out.println(str.charAt(0));
+        // System.out.println(str.charAt(0));
 
-        System.out.println(str.charAt(str.length() - 1));
+        // System.out.println(str.charAt(str.length() - 1));
 
-        System.out.println(str.substring(2));
+        // System.out.println(str.substring(2));
 
-        System.out.println(str.substring(1, 4));
+        // System.out.println(str.substring(1, 4));
 
-        System.out.println(str.indexOf("ee"));
+        // System.out.println(str.indexOf("ee"));
 
-        // printChars("geekster");
+        // // printChars("geekster");
 
-        printSubstrings("geekster");
+        // printSubstrings("geekster");
 
-        System.out.println(isPalindrome("malayalam"));
+        // System.out.println(isPalindrome("malayalam"));
 
-        System.out.println(countPalindromicSubStrings("geekster"));
+        // System.out.println(countPalindromicSubStrings("geekster"));
 
-        String str1 = "abc";
-        String str3 = "abc";
-        String str4 = new String("abc");
-        String str5 = new String("abc");
-        System.out.println((str5 == str4));
-        System.out.println(str1);
-        str1 = "def";
+        // String str1 = "abc";
+        // String str3 = "abc";
+        // String str4 = new String("abc");
+        // String str5 = new String("abc");
+        // System.out.println((str5 == str4));
         // System.out.println(str1);
-        // toggleCase("Geekster");
-        // System.out.println(toggleCaseBetter("Geekster"));
-        // System.out.println(OddEven("Geekster"));
-        // System.out.println(InsertDiff("abcd"));
-        // System.out.println(Compression("aabcd"));
+        // str1 = "def";
+        // // System.out.println(str1);
+        // // toggleCase("Geekster");
+        // // System.out.println(toggleCaseBetter("Geekster"));
+        // // System.out.println(OddEven("Geekster"));
+        // // System.out.println(InsertDiff("abcd"));
+        // // System.out.println(Compression("aabcd"));
 
-        ArrayList<Integer> list = new ArrayList<>();
-        list.add(5);
-        list.add(10);
-        list.add(20);
-        list.add(30);
-        list.add(30);
-        System.out.println(list);
-        System.out.println(list.size());
-        System.out.println(list.get(1));
-        System.out.println(list.set(0, 50));
-        System.out.println(list);
-        ArrayList<String> list2 = new ArrayList<>();
-        list2.add("Abc");
-        list2.add("def");
-        System.out.println(list2);
-        for(int val:list){
-            System.out.print(val+" ");
-        }
-        System.out.println();
+        // ArrayList<Integer> list = new ArrayList<>();
+        // list.add(5);
+        // list.add(10);
+        // list.add(20);
+        // list.add(30);
+        // list.add(30);
+        // System.out.println(list);
+        // System.out.println(list.size());
+        // System.out.println(list.get(1));
+        // System.out.println(list.set(0, 50));
+        // System.out.println(list);
+        // ArrayList<String> list2 = new ArrayList<>();
+        // list2.add("Abc");
+        // list2.add("def");
+        // System.out.println(list2);
+        // for(int val:list){
+        // System.out.print(val+" ");
+        // }
+        // System.out.println();
 
-        System.out.println(list.remove(1));
-        System.out.println(list);
+        // System.out.println(list.remove(1));
+        // System.out.println(list);
     }
 
-    
+    public static boolean wordBreakoutput(String s, List<String> wordDict, String ans) {
+        if(ans.length()>s.length()){
+            return false;
+        }
+        if (s.equals(ans)) {
+            return true;
+        } else {
+            for (int i = 0; i < wordDict.size(); i++) {
+                wordBreakoutput(s, wordDict, ans + wordDict.get(i));
+            }
+        }
+        return false;
+    }
+
+    public boolean wordBreak(String s, List<String> wordDict) {
+        return wordBreakoutput(s, wordDict, "");
+
+    }
 
     public static String Compression(String str) {
         StringBuilder sb = new StringBuilder();

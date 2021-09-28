@@ -213,5 +213,28 @@ public class LinkedList {
         this.head = this.tail;
         this.tail = temp;
     }
+    Node left;
+    public boolean isPalindrome(){
+        left = this.head;
+        return isPalindrome(this.head);
+    }
+    private boolean isPalindrome(Node right){
+        if(right==null){
+            return true;
+        }
+        boolean bl = isPalindrome(right.next);
+        if(bl == false){
+            return false;
+        }else{
+            if(left.data==right.data){
+                left = left.next;
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        
+    }
 
 }

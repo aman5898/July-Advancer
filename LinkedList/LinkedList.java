@@ -63,9 +63,28 @@ public class LinkedList {
         System.out.println("```````````````````````````````````````````");
     }
 
-    // public void addAt(int idx,int data){
+    public void addAt(int idx, int data) {
+        if (idx < 0 || idx > this.size)
+            System.out.println("Not Possible");
+        if (idx == 0) {
+            addFirst(data);
+        } else if (idx == this.size) {
+            addLast(data);
+        } else {
+            int count = 0;
+            Node current = head;
+            while (count < idx - 1) {
+                current = current.next;
+                count++;
+            }
 
-    // }
+            Node node = new Node();
+            node.data = data;
+            node.next = current.next;
+            current.next = node;
+            size++;
+        }
+    }
 
     public boolean isEmpty() {
         return this.size == 0;
@@ -166,10 +185,10 @@ public class LinkedList {
         }
     }
 
-    public void reverseDI(){
-        int l=0;
-        int r=this.size-1;
-        while(l<r){
+    public void reverseDI() {
+        int l = 0;
+        int r = this.size - 1;
+        while (l < r) {
             Node lNode = getNodeAt(l);
             Node rNode = getNodeAt(r);
             int temp = lNode.data;
@@ -178,6 +197,21 @@ public class LinkedList {
             l++;
             r--;
         }
+    }
+
+    public void reversePI(){
+        Node curr = this.head;
+        Node prev = null;
+        while(curr!=null){
+            Node temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
+        }
+
+        Node temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
     }
 
 }

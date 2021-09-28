@@ -16,6 +16,8 @@ public static void main(String[] args){
     ll.display();
     ll.reverseDI();
     ll.display();
+    ll.reversePI();
+    ll.display();
 }
 
 }

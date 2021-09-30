@@ -1,5 +1,6 @@
 package LinkedList;
 
+
 public class LinkedList {
 
     private class Node {
@@ -276,8 +277,29 @@ public class LinkedList {
         node.next.next = node;
     }
 
-    // public static LinkedList mregeTwoSortedLL(LinkedList l1, LinkedList l2){
+    public void reverseInGroups(int k){
+        LinkedList finalList = new LinkedList();
+        while(this.size()>0){
+            LinkedList tempList = new LinkedList();
+            for(int i=0;i<k&&this.size!=0;i++){
+                tempList.addFirst(this.removeFirst());
+            }
 
-    // }
+            if(finalList.size()==0){
+                finalList.head = tempList.head;
+                finalList.tail = tempList.tail;
+                finalList.size = tempList.size;
+            }else{
+                finalList.tail.next = tempList.head;
+                finalList.tail = tempList.tail;
+                finalList.size += tempList.size; 
+            }
+        }
+
+        this.head = finalList.head;
+        this.tail = finalList.tail;
+        this.size = finalList.size;
+        this.tail.next = null;
+    }
 
 }

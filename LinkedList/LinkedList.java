@@ -249,7 +249,7 @@ public class LinkedList {
             return;
         }
         reverseDataRecursive(right.next, floor + 1);
-        
+
         if (floor >= size / 2) {
             int temp = left.data;
             left.data = right.data;
@@ -258,5 +258,26 @@ public class LinkedList {
         left = left.next;
 
     }
+
+    public void reversePointerRecursive(){
+        reversePointerRecursive(this.head);
+        this.head.next = null;
+        Node temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+    }
+
+    private void reversePointerRecursive(Node node) {
+
+        if(node.next==null){
+            return;
+        }
+        reversePointerRecursive(node.next);
+        node.next.next = node;
+    }
+
+    // public static LinkedList mregeTwoSortedLL(LinkedList l1, LinkedList l2){
+
+    // }
 
 }

@@ -27,6 +27,8 @@ public static void main(String[] args){
     ll.display();
     ll.reverseDataRecursive();
     ll.display();
+    ll.reversePointerRecursive();
+    ll.display();
     // System.out.println(ll.isPalindrome());
 }
 

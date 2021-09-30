@@ -20,10 +20,14 @@ public static void main(String[] args){
     ll.addLast(10);
     ll.addLast(20);
     ll.addLast(30);
-    ll.addLast(20);
-    ll.addLast(10);
+    ll.addLast(40);
+    ll.addLast(50);
     ll.display();
-    System.out.println(ll.isPalindrome());
+    ll.reverseDI();
+    ll.display();
+    ll.reverseDataRecursive();
+    ll.display();
+    // System.out.println(ll.isPalindrome());
 }
 
 }

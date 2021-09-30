@@ -199,10 +199,10 @@ public class LinkedList {
         }
     }
 
-    public void reversePI(){
+    public void reversePI() {
         Node curr = this.head;
         Node prev = null;
-        while(curr!=null){
+        while (curr != null) {
             Node temp = curr.next;
             curr.next = prev;
             prev = curr;
@@ -213,28 +213,50 @@ public class LinkedList {
         this.head = this.tail;
         this.tail = temp;
     }
+
     Node left;
-    public boolean isPalindrome(){
+
+    public boolean isPalindrome() {
         left = this.head;
         return isPalindrome(this.head);
     }
-    private boolean isPalindrome(Node right){
-        if(right==null){
+
+    private boolean isPalindrome(Node right) {
+        if (right == null) {
             return true;
         }
         boolean bl = isPalindrome(right.next);
-        if(bl == false){
+        if (bl == false) {
             return false;
-        }else{
-            if(left.data==right.data){
+        } else {
+            if (left.data == right.data) {
                 left = left.next;
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }
 
+    }
+
+    public void reverseDataRecursive() {
+        left = this.head;
+        reverseDataRecursive(this.head, 0);
+    }
+
+    private void reverseDataRecursive(Node right, int floor) {
+        if (right == null) {
+            return;
+        }
+        reverseDataRecursive(right.next, floor + 1);
         
+        if (floor >= size / 2) {
+            int temp = left.data;
+            left.data = right.data;
+            right.data = temp;
+        }
+        left = left.next;
+
     }
 
 }

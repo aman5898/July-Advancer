@@ -17,8 +17,9 @@ public class Queue {
         if(size==0){
             data[rear] = value;
         }else{
-            rear++;
-            data[rear] = value;
+            this.rear++;
+            this.rear = this.rear%this.data.length;
+            this.data[this.rear] = value;
         }
         this.size++;
     }
@@ -30,6 +31,7 @@ public class Queue {
 
         int temp = this.data[this.front];
         this.front++;
+        this.front = this.front%this.data.length;
         this.size--;
         return temp;
         
@@ -47,10 +49,14 @@ public class Queue {
         System.out.println();
         System.out.println("````````````````````````````````");
         for(int i=0;i<this.size;i++){
-            System.out.print(this.data[this.front+i]+" ");
+            System.out.print(this.data[(this.front+i)%this.data.length]+" ");
         }
         System.out.println();
         System.out.println("````````````````````````````````");
+
+        for(int val:this.data){
+            System.out.print(val+" ");
+        }
     }
 
 

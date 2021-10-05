@@ -9,14 +9,18 @@ public class Client {
         q.enqueue(8);
         q.enqueue(9);
         q.display();
+        q.dequeue();
+        q.dequeue();
+        q.enqueue(15);
+        q.display();
         // q.enqueue(10);
-        System.out.println(q.dequeue());
-        System.out.println(q.dequeue());
-        q.display();
-        System.out.println(q.dequeue());
-        System.out.println(q.dequeue());
-        q.display();
-        System.out.println(q.dequeue());
-        System.out.println(q.dequeue());
+        // System.out.println(q.dequeue());
+        // System.out.println(q.dequeue());
+        // q.display();
+        // System.out.println(q.dequeue());
+        // System.out.println(q.dequeue());
+        // q.display();
+        // System.out.println(q.dequeue());
+        // // System.out.println(q.dequeue());
     }
 }
